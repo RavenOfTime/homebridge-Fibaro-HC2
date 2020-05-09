@@ -212,7 +212,7 @@ class FibaroHC2 {
 		this.log('ss ', this.config)
 		devices.map((s, i, a) => {
 			const checkRoleExistence = roleParam => this.config.accptable?.some((value) => value == roleParam)
-			if (s.visible == true && s.name.charAt(0) != "_" && !checkRoleExistence(s.id)) {
+			if (s.visible == true && s.name.charAt(0) != "_" && checkRoleExistence(s.id)) {
 				let siblings = this.findSiblingDevices(s, a);
 				this.addAccessory(ShadowAccessory.createShadowAccessory(s, siblings, Accessory, Service, Characteristic, this));
 			}
