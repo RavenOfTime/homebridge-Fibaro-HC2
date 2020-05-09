@@ -147,6 +147,8 @@ class FibaroHC2 {
 			this.config.LockTargetStateDelay = "2";
 		if (this.config.FibaroTemperatureUnit == undefined)
 			this.config.FibaroTemperatureUnit = "C";
+		if (this.config.accptable == undefined)
+			this.config.accptable = [26];
 		this.fibaroClient = new FibaroClient(this.config.host, this.config.username, this.config.password);
 		if (pollerPeriod != 0)
 			this.poller = new Poller(this, pollerPeriod, Service, Characteristic);
