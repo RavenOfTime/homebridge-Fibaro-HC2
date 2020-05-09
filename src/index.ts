@@ -208,7 +208,8 @@ class FibaroHC2 {
 	LoadAccessories(devices) {
 		this.log('Loading accessories', '');
 		devices.map((s, i, a) => {
-			if (s.visible == true && s.name.charAt(0) != "_" && this.config.accptable?.find((sa, ia, aa) => { if (sa == s.id) { return true; } else { return false } })) {
+			const checkRoleExistence = roleParam => this.config.accptable?.some((value) => value == roleParam)
+			if (s.visible == true && s.name.charAt(0) != "_" && !checkRoleExistence(s.id)) {
 				let siblings = this.findSiblingDevices(s, a);
 				this.addAccessory(ShadowAccessory.createShadowAccessory(s, siblings, Accessory, Service, Characteristic, this));
 			}
