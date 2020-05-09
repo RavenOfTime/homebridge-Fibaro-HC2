@@ -92,7 +92,7 @@ class Config {
 		this.host = "";
 		this.username = "";
 		this.password = "";
-		this.accptable = [];
+		this.accptable = [26];
 	}
 }
 
@@ -166,9 +166,9 @@ class FibaroHC2 {
 			})
 			.then((devices) => {
 				this.log('devicesmain', devices);
-				Array(devices).forEach(element => {
-					this.log('devices', Object(element).id);
-				});
+				// devices.map((s, i, a) => {
+				// 	this.log('devices', s.id);
+				// });
 				this.LoadAccessories(devices);
 			})
 			.catch((err) => {
@@ -208,7 +208,7 @@ class FibaroHC2 {
 	LoadAccessories(devices) {
 		this.log('Loading accessories', '');
 		devices.map((s, i, a) => {
-			if (s.visible == true && s.name.charAt(0) != "_") {
+			if (s.visible == true && s.name.charAt(0) != "_" && !this.config.accptable.includes(s.id)) {
 				let siblings = this.findSiblingDevices(s, a);
 				this.addAccessory(ShadowAccessory.createShadowAccessory(s, siblings, Accessory, Service, Characteristic, this));
 			}
