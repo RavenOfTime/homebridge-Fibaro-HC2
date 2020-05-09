@@ -165,7 +165,7 @@ class FibaroHC2 {
 				return this.fibaroClient ? this.fibaroClient.getDevices() : {};
 			})
 			.then((devices) => {
-				this.log('devices', typeof devices);
+				this.log('devices', devices);
 				this.LoadAccessories(devices);
 			})
 			.catch((err) => {
