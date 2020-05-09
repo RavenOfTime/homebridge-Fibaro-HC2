@@ -77,7 +77,7 @@ class Config {
 	password: string;
 	pollerperiod?: string;
 	securitysystem?: string;
-	accptable?: any;
+	accptable?: Array<number>;
 	switchglobalvariables?: string;
 	thermostattimeout?: string;
 	enablecoolingstatemanagemnt?: string;
@@ -208,7 +208,7 @@ class FibaroHC2 {
 	LoadAccessories(devices) {
 		this.log('Loading accessories', '');
 		devices.map((s, i, a) => {
-			if (s.visible == true && s.name.charAt(0) != "_" && !this.config.accptable.includes(s.id)) {
+			if (s.visible == true && s.name.charAt(0) != "_" && this.config.accptable?.find((sa, ia, aa) => { if (sa == s.id) { return true; } else { return false } })) {
 				let siblings = this.findSiblingDevices(s, a);
 				this.addAccessory(ShadowAccessory.createShadowAccessory(s, siblings, Accessory, Service, Characteristic, this));
 			}
