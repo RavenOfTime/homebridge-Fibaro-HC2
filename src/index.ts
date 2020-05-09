@@ -207,8 +207,8 @@ class FibaroHC2 {
 	}
 	LoadAccessories(devices) {
 		this.log('Loading accessories', '');
+		this.log('ss ', this.config)
 		devices.map((s, i, a) => {
-			this.log('ss ', this.config.accptable)
 			const checkRoleExistence = roleParam => this.config.accptable?.some((value) => value == roleParam)
 			if (s.visible == true && s.name.charAt(0) != "_" && !checkRoleExistence(s.id)) {
 				let siblings = this.findSiblingDevices(s, a);
