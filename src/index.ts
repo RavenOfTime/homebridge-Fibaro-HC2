@@ -165,7 +165,7 @@ class FibaroHC2 {
 				return this.fibaroClient ? this.fibaroClient.getDevices() : {};
 			})
 			.then((devices) => {
-				// this.log('devices', devices);
+				this.log('devicesmain', devices);
 				Array(devices).forEach(element => {
 					this.log('devices', Object(element).id);
 				});
