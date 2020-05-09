@@ -77,6 +77,7 @@ class Config {
 	password: string;
 	pollerperiod?: string;
 	securitysystem?: string;
+	accptable?: any;
 	switchglobalvariables?: string;
 	thermostattimeout?: string;
 	enablecoolingstatemanagemnt?: string;
@@ -91,6 +92,7 @@ class Config {
 		this.host = "";
 		this.username = "";
 		this.password = "";
+		this.accptable = [];
 	}
 }
 
@@ -163,6 +165,7 @@ class FibaroHC2 {
 				return this.fibaroClient ? this.fibaroClient.getDevices() : {};
 			})
 			.then((devices) => {
+				this.log('devices', typeof devices);
 				this.LoadAccessories(devices);
 			})
 			.catch((err) => {
