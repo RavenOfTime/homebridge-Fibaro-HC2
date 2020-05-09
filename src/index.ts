@@ -166,8 +166,8 @@ class FibaroHC2 {
 			})
 			.then((devices) => {
 				// this.log('devices', devices);
-				devices.forEach(element => {
-					this.log('devices', element.id);
+				Array(devices).forEach(element => {
+					this.log('devices', Object(element).id);
 				});
 				this.LoadAccessories(devices);
 			})
