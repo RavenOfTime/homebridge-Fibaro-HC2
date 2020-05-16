@@ -131,7 +131,7 @@ class FibaroHC2 {
 			this.config.securitysystem = "disabled";
 		if (this.config.switchglobalvariables == undefined)
 			this.config.switchglobalvariables = "";
-		if (this.config.thermostattimeout == undefined)
+	if (this.config.thermostattimeout == undefined)
 			this.config.thermostattimeout = timeOffset.toString();
 		if (this.config.enablecoolingstatemanagemnt == undefined)
 			this.config.enablecoolingstatemanagemnt = defaultEnableCoolingStateManagemnt;
